@@ -1,3 +1,9 @@
+# ITパスポート略語学習サービス (IT_passport_keyword)
+
+ITパスポートの略語勉強のための学習サービスです。
+
+## Development
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
