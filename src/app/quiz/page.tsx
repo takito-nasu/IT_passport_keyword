@@ -1,12 +1,20 @@
-import { promises as fs } from 'fs';
-import path from 'path';
 import QuizGame from '@/components/QuizGame';
 import { Keyword } from '@/types/keyword';
+import { supabase } from '@/lib/supabase';
+
+export const revalidate = 0; // Disable cache for dynamic data
 
 async function getKeywords(): Promise<Keyword[]> {
-    const jsonDirectory = path.join(process.cwd(), 'src', 'data');
-    const fileContents = await fs.readFile(path.join(jsonDirectory, 'keywords.json'), 'utf8');
-    return JSON.parse(fileContents);
+    const { data, error } = await supabase
+        .from('keywords')
+        .select('*');
+
+    if (error) {
+        console.error("Error fetching keywords:", error);
+        return [];
+    }
+
+    return data as Keyword[];
 }
 
 export default async function QuizPage() {
