@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1",
+    "term": "BPR",
+    "meaning": "Business Process Reengineering",
+    "description": "企業改革のために、既存の組織やビジネスルールを抜本的に見直し、職務、業務フロー、管理機構、情報システムを再設計すること。",
+    "category": "Strategy"
+  },
+  {
+    "id": "2",
+    "term": "CRM",
+    "meaning": "Customer Relationship Management",
+    "description": "顧客満足度とロイヤルティの向上を通して、売上の拡大と収益性の向上を目指す経営手法（顧客関係管理）。",
+    "category": "Strategy"
+  },
+  {
+    "id": "3",
+    "term": "SCM",
+    "meaning": "Supply Chain Management",
+    "description": "原材料の調達から製造、物流、販売に至るまでの一連のプロセス（供給連鎖）を最適化し、コスト削減や納期短縮を図る経営管理手法。",
+    "category": "Strategy"
+  },
+  {
+    "id": "4",
+    "term": "SLA",
+    "meaning": "Service Level Agreement",
+    "description": "サービス提供者と利用者の間で結ばれる、サービスの品質（稼働率、応答時間など）に関する合意。",
+    "category": "Management"
+  },
+  {
+    "id": "5",
+    "term": "RFP",
+    "meaning": "Request For Proposal",
+    "description": "発注先となるベンダー企業に対し、具体的なシステム提案を行うよう要求・依頼する文書（提案依頼書）。",
+    "category": "Management"
+  },
+  {
+    "id": "6",
+    "term": "VPN",
+    "meaning": "Virtual Private Network",
+    "description": "インターネットなどの公衆回線を、あたかも専用回線であるかのように利用できる仮想的なプライベートネットワーク技術。",
+    "category": "Technology"
+  },
+  {
+    "id": "7",
+    "term": "NFC",
+    "meaning": "Near Field Communication",
+    "description": "至近距離（数cm〜10cm程度）での無線通信を行う技術。交通系ICカードやスマートフォン決済などで利用される。",
+    "category": "Technology"
+  },
+  {
+    "id": "8",
+    "term": "IoT",
+    "meaning": "Internet of Things",
+    "description": "「モノのインターネット」と呼ばれ、家電や自動車などあらゆるモノがインターネットにつながり、情報をやり取りする仕組み。",
+    "category": "Technology"
+  },
+  {
+    "id": "9",
+    "term": "BCP",
+    "meaning": "Business Continuity Plan",
+    "description": "災害や事故などの予期せぬ事態が発生した場合に、中核となる事業を継続、または早期復旧させるための計画（事業継続計画）。",
+    "category": "Strategy"
+  },
+  {
+    "id": "10",
+    "term": "CSR",
+    "meaning": "Corporate Social Responsibility",
+    "description": "企業が利益を追求するだけでなく、環境保護や社会貢献など、社会に対して果たすべき責任。",
+    "category": "Strategy"
+  }
+]
