@@ -2,6 +2,25 @@
 
 ITパスポートの略語勉強のための学習サービスです。
 
+## Future Roadmap
+
+### v1.1 - 2026 Q1
+- **出題ジャンル選択機能**
+  - ストラテジ系、テクノロジ系、マネジメント系、ランダムから選択可能にする
+  - 自分の得意・不得意分野を可視化する
+- **単語カードモード**
+  - "Network", "Resource" などの頻出単語を単体で学習するモード
+  - 丸暗記から脱却し、単語の意味を理解して組み立てられるようにする
+- **総復習モード**
+  - 全問通しでテストできる機能
+  - 10問制限を解除して実力を測定する
+
+### v1.0 (Current)
+- 単語並べ替えクイズ（Word Shuffle Quiz）の実装
+- ランダム10問出題
+- 正式名称の空白埋め形式により英語理解を深める
+
+
 ## Development
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
