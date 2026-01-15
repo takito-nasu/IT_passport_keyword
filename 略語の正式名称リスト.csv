@@ -1,0 +1,71 @@
+カテゴリ,日本語での意味,略称,Full English Name,単語1,単語2,単語3,単語4,単語5
+ストラテジ系,企業の社会的責任,CSR,Corporate Social Responsibility,Corporate,Social,Responsibility,null,null
+ストラテジ系,計画・実行・評価・改善,PDCA,Plan-Do-Check-Act,Plan-Do-Check-Act,null,null,null,null
+ストラテジ系,事業継続管理,BCM,Business Continuity Management,Business,Continuity,Management,null,null
+ストラテジ系,事業継続計画,BCP,Business Continuity Plan,Business,Continuity,Plan,null,null
+ストラテジ系,人的資源管理,HRM,Human Resource Management,Human,Resource,Management,null,null
+ストラテジ系,最高情報責任者,CIO,Chief Information Officer,Chief,Information,Officer,null,null
+ストラテジ系,最高経営責任者,CEO,Chief Executive Officer,Chief,Executive,Officer,null,null
+ストラテジ系,最高執行責任者,COO,Chief Operating Officer,Chief,Operating,Officer,null,null
+ストラテジ系,モノのインターネット,IoT,Internet of Things,Internet,of,Things,null,null
+ストラテジ系,社会的責任投資,SRI,Socially Responsible Investment,Socially,Responsible,Investment,null,null
+ストラテジ系,環境・社会・ガバナンス,ESG,"Environmental, Social, and Governance","Environmental,","Social,",and,Governance,null
+ストラテジ系,情報技術,IT,Information Technology,Information,Technology,null,null,null
+ストラテジ系,観察・状況判断・決定・実行,OODA,Observe-Orient-Decide-Act,Observe-Orient-Decide-Act,null,null,null,null
+ストラテジ系,職場内訓練,OJT,On-the-Job Training,On-the-Job,Training,null,null,null
+ストラテジ系,人事（人的資源）,HR,Human Resources,Human,Resources,null,null,null
+ストラテジ系,人工知能,AI,Artificial Intelligence,Artificial,Intelligence,null,null,null
+ストラテジ系,デジタルトランスフォーメーション,DX,Digital Transformation,Digital,Transformation,null,null,null
+ストラテジ系,情報通信技術,ICT,Information and Communication Technology,Information,and,Communication,Technology,null
+ストラテジ系,投資利益率,ROI,Return on Investment,Return,on,Investment,null,null
+ストラテジ系,自己資本利益率,ROE,Return on Equity,Return,on,Equity,null,null
+ストラテジ系,強み・弱み・機会・脅威の分析,SWOT,"Strengths, Weaknesses, Opportunities, Threats","Strengths,","Weaknesses,","Opportunities,",Threats,null
+ストラテジ系,プロダクト・ポートフォリオ・マネジメント,PPM,Product Portfolio Management,Product,Portfolio,Management,null,null
+ストラテジ系,営業支援システム,SFA,Sales Force Automation,Sales,Force,Automation,null,null
+ストラテジ系,顧客関係管理,CRM,Customer Relationship Management,Customer,Relationship,Management,null,null
+ストラテジ系,企業資源計画,ERP,Enterprise Resource Planning,Enterprise,Resource,Planning,null,null
+ストラテジ系,サプライチェーン管理,SCM,Supply Chain Management,Supply,Chain,Management,null,null
+ストラテジ系,重要目標達成指標,KGI,Key Goal Indicator,Key,Goal,Indicator,null,null
+ストラテジ系,重要業績評価指標,KPI,Key Performance Indicator,Key,Performance,Indicator,null,null
+ストラテジ系,主要成功要因,CSF,Critical Success Factor,Critical,Success,Factor,null,null
+ストラテジ系,バランススコアカード,BSC,Balanced Scorecard,Balanced,Scorecard,null,null,null
+ストラテジ系,合併・買収,M&A,Mergers and Acquisitions,Mergers,and,Acquisitions,null,null
+ストラテジ系,株式公開買付け,TOB,Takeover Bid,Takeover,Bid,null,null,null
+ストラテジ系,ベンチャーキャピタル,VC,Venture Capital,Venture,Capital,null,null,null
+ストラテジ系,サービスとしてのソフトウェア,SaaS,Software as a Service,Software,as,a,Service,null
+ストラテジ系,サービスとしてのプラットフォーム,PaaS,Platform as a Service,Platform,as,a,Service,null
+ストラテジ系,サービスとしてのインフラストラクチャ,IaaS,Infrastructure as a Service,Infrastructure,as,a,Service,null
+ストラテジ系,ロボティック・プロセス・オートメーション,RPA,Robotic Process Automation,Robotic,Process,Automation,null,null
+マネジメント系,作業分解構成図,WBS,Work Breakdown Structure,Work,Breakdown,Structure,null,null
+マネジメント系,ITサービスマネジメントのベストプラクティス,ITIL,Information Technology Infrastructure Library,Information,Technology,Infrastructure,Library,null
+マネジメント系,サービスレベル合意書,SLA,Service Level Agreement,Service,Level,Agreement,null,null
+マネジメント系,サービスレベル管理,SLM,Service Level Management,Service,Level,Management,null,null
+マネジメント系,プロジェクトマネジメント知識体系,PMBOK,Project Management Body of Knowledge,Project,Management,Body,of,Knowledge
+マネジメント系,能力成熟度モデル統合,CMMI,Capability Maturity Model Integration,Capability,Maturity,Model,Integration,null
+テクノロジ系,中央演算処理装置,CPU,Central Processing Unit,Central,Processing,Unit,null,null
+テクノロジ系,随時書き込み読み出しメモリ,RAM,Random Access Memory,Random,Access,Memory,null,null
+テクノロジ系,読み出し専用メモリ,ROM,Read Only Memory,Read,Only,Memory,null,null
+テクノロジ系,ハードディスクドライブ,HDD,Hard Disk Drive,Hard,Disk,Drive,null,null
+テクノロジ系,ソリッドステートドライブ,SSD,Solid State Drive,Solid,State,Drive,null,null
+テクノロジ系,ユニバーサル・シリアル・バス,USB,Universal Serial Bus,Universal,Serial,Bus,null,null
+テクノロジ系,オペレーティングシステム,OS,Operating System,Operating,System,null,null,null
+テクノロジ系,オープンソースソフトウェア,OSS,Open Source Software,Open,Source,Software,null,null
+テクノロジ系,グラフィカル・ユーザ・インタフェース,GUI,Graphical User Interface,Graphical,User,Interface,null,null
+テクノロジ系,構造化照会言語,SQL,Structured Query Language,Structured,Query,Language,null,null
+テクノロジ系,データベース管理システム,DBMS,Database Management System,Database,Management,System,null,null
+テクノロジ系,インターネットプロトコル,IP,Internet Protocol,Internet,Protocol,null,null,null
+テクノロジ系,ドメインネームシステム,DNS,Domain Name System,Domain,Name,System,null,null
+テクノロジ系,ハイパーテキスト・トランスファー・プロトコル,HTTP,Hypertext Transfer Protocol,Hypertext,Transfer,Protocol,null,null
+テクノロジ系,ユニフォーム・リソース・ロケータ,URL,Uniform Resource Locator,Uniform,Resource,Locator,null,null
+テクノロジ系,伝送制御プロトコル,TCP,Transmission Control Protocol,Transmission,Control,Protocol,null,null
+テクノロジ系,ユーザ・データグラム・プロトコル,UDP,User Datagram Protocol,User,Datagram,Protocol,null,null
+テクノロジ系,メディアアクセス制御,MAC,Media Access Control,Media,Access,Control,null,null
+テクノロジ系,ローカルエリアネットワーク,LAN,Local Area Network,Local,Area,Network,null,null
+テクノロジ系,ワイドエリアネットワーク,WAN,Wide Area Network,Wide,Area,Network,null,null
+テクノロジ系,非武装地帯,DMZ,Demilitarized Zone,Demilitarized,Zone,null,null,null
+テクノロジ系,仮想プライベートネットワーク,VPN,Virtual Private Network,Virtual,Private,Network,null,null
+テクノロジ系,セキュア・ソケッツ・レイヤー,SSL,Secure Sockets Layer,Secure,Sockets,Layer,null,null
+テクノロジ系,トランスポート・レイヤー・セキュリティ,TLS,Transport Layer Security,Transport,Layer,Security,null,null
+テクノロジ系,ウェブアプリケーションファイアウォール,WAF,Web Application Firewall,Web,Application,Firewall,null,null
+テクノロジ系,侵入検知システム,IDS,Intrusion Detection System,Intrusion,Detection,System,null,null
+テクノロジ系,侵入防止システム,IPS,Intrusion Prevention System,Intrusion,Prevention,System,null,null

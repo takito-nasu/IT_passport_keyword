@@ -1,12 +1,13 @@
-import QuizGame from '@/components/QuizGame';
+import WordShuffleQuiz from '@/components/WordShuffleQuiz';
 import { Keyword } from '@/types/keyword';
 import { supabase } from '@/lib/supabase';
+import Link from 'next/link';
 
 export const revalidate = 0; // Disable cache for dynamic data
 
 async function getKeywords(): Promise<Keyword[]> {
     const { data, error } = await supabase
-        .from('keywords')
+        .from('it_abbreviations')
         .select('*');
 
     if (error) {
@@ -22,16 +23,21 @@ export default async function QuizPage() {
 
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col font-[family-name:var(--font-geist-sans)]">
-            <header className="bg-white shadow-sm p-4 sticky top-0 z-10">
+            <header className="bg-white shadow-sm p-4 sticky top-0 z-10 border-b border-gray-100">
                 <div className="max-w-4xl mx-auto flex justify-between items-center">
-                    <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-                        略語マスター
+                    <h1 className="text-xl font-black tracking-tight flex items-center gap-2">
+                        <Link href="http://localhost:3000/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                            <span className="text-2xl">🧩</span>
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                                略語マスター
+                            </span>
+                        </Link>
                     </h1>
                 </div>
             </header>
 
-            <main className="flex-1 max-w-2xl w-full mx-auto p-4 md:p-8 flex flex-col justify-center">
-                <QuizGame allKeywords={keywords} />
+            <main className="flex-1 w-full mx-auto p-4 md:p-8 flex flex-col justify-center">
+                <WordShuffleQuiz allKeywords={keywords} />
             </main>
         </div>
     );
