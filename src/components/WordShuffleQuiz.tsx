@@ -6,9 +6,10 @@ import Link from "next/link";
 
 type WordShuffleQuizProps = {
     allKeywords: Keyword[];
+    mode?: 'random10' | 'all';
 };
 
-export default function WordShuffleQuiz({ allKeywords }: WordShuffleQuizProps) {
+export default function WordShuffleQuiz({ allKeywords, mode = 'random10' }: WordShuffleQuizProps) {
     const [questions, setQuestions] = useState<Keyword[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState(0);
@@ -22,10 +23,18 @@ export default function WordShuffleQuiz({ allKeywords }: WordShuffleQuizProps) {
     // Initialize game
     useEffect(() => {
         if (!allKeywords || allKeywords.length === 0) return;
-        // Shuffle and pick 10 questions
+
+        // Shuffle source keywords
         const shuffled = [...allKeywords].sort(() => 0.5 - Math.random());
-        setQuestions(shuffled.slice(0, 10));
-    }, [allKeywords]);
+
+        if (mode === 'all') {
+            // Use all keywords
+            setQuestions(shuffled);
+        } else {
+            // Pick 10 questions
+            setQuestions(shuffled.slice(0, 10));
+        }
+    }, [allKeywords, mode]);
 
     // Setup current question
     useEffect(() => {
