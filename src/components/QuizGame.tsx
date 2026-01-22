@@ -31,10 +31,10 @@ export default function QuizGame({ allKeywords }: QuizGameProps) {
         const currentQ = questions[currentIndex];
         const otherKeywords = allKeywords.filter((k) => k.id !== currentQ.id);
         const shuffledOthers = otherKeywords.sort(() => 0.5 - Math.random());
-        const distractors = shuffledOthers.slice(0, 3).map((k) => k.meaning);
+        const distractors = shuffledOthers.slice(0, 3).map((k) => k.meaning_jp);
 
         // Combine correct answer and distractors, then shuffle
-        const allChoices = [currentQ.meaning, ...distractors].sort(
+        const allChoices = [currentQ.meaning_jp, ...distractors].sort(
             () => 0.5 - Math.random()
         );
         setChoices(allChoices);
@@ -48,7 +48,7 @@ export default function QuizGame({ allKeywords }: QuizGameProps) {
         setSelectedChoice(choice);
         setShowExplanation(true);
 
-        if (choice === questions[currentIndex].meaning) {
+        if (choice === questions[currentIndex].meaning_jp) {
             setScore((prev) => prev + 1);
         }
     };
@@ -98,7 +98,7 @@ export default function QuizGame({ allKeywords }: QuizGameProps) {
     }
 
     const currentQ = questions[currentIndex];
-    const isCorrect = selectedChoice === currentQ.meaning;
+    const isCorrect = selectedChoice === currentQ.meaning_jp;
 
     return (
         <div className="w-full max-w-2xl mx-auto">
@@ -121,7 +121,7 @@ export default function QuizGame({ allKeywords }: QuizGameProps) {
                         {currentQ.category}
                     </span>
                     <h2 className="text-5xl font-black tracking-tight mb-2">
-                        {currentQ.term}
+                        {currentQ.abbreviation}
                     </h2>
                     <p className="opacity-90">この略語の意味は？</p>
                 </div>
@@ -131,7 +131,7 @@ export default function QuizGame({ allKeywords }: QuizGameProps) {
                         let buttonStyle = "bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700";
 
                         if (showExplanation) {
-                            if (choice === currentQ.meaning) {
+                            if (choice === currentQ.meaning_jp) {
                                 buttonStyle = "bg-green-100 border-green-300 text-green-800 font-bold ring-2 ring-green-400"; // Correct answer
                             } else if (choice === selectedChoice) {
                                 buttonStyle = "bg-red-100 border-red-300 text-red-800 ring-2 ring-red-300"; // Wrong selection
@@ -171,9 +171,9 @@ export default function QuizGame({ allKeywords }: QuizGameProps) {
                     </div>
 
                     <p className="text-gray-700 leading-relaxed mb-6">
-                        <span className="font-bold text-gray-900">{currentQ.meaning}</span>
+                        <span className="font-bold text-gray-900">{currentQ.meaning_jp}</span>
                         <br />
-                        {currentQ.description}
+                        {currentQ.full_english_name}
                     </p>
 
                     <button
