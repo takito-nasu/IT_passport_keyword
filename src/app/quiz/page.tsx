@@ -37,7 +37,22 @@ export default async function QuizPage() {
             </header>
 
             <main className="flex-1 w-full mx-auto p-4 md:p-8 flex flex-col justify-center">
-                <QuizCoordinator allKeywords={keywords} />
+                {keywords.length > 0 ? (
+                    <QuizCoordinator allKeywords={keywords} />
+                ) : (
+                    <div className="text-center p-8 bg-white rounded-2xl shadow-md border border-red-100">
+                        <h2 className="text-2xl font-bold text-red-600 mb-4">データが見つかりません</h2>
+                        <p className="text-gray-600 mb-6">
+                            問題データの取得に失敗したか、データが登録されていません。<br />
+                            Supabaseの接続設定やデータを確認してください。
+                        </p>
+                        <div className="text-sm text-gray-400 bg-gray-50 p-4 rounded-lg text-left overflow-auto max-h-40">
+                            Setting Check:<br />
+                            - NEXT_PUBLIC_SUPABASE_URL: {process.env.NEXT_PUBLIC_SUPABASE_URL ? 'Set' : 'Missing'}<br />
+                            - NEXT_PUBLIC_SUPABASE_ANON_KEY: {process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? 'Set' : 'Missing'}
+                        </div>
+                    </div>
+                )}
             </main>
         </div>
     );
