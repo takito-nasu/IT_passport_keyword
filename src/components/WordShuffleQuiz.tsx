@@ -126,12 +126,12 @@ export default function WordShuffleQuiz({ allKeywords, mode = 'random10' }: Word
 
     if (isFinished) {
         return (
-            <div className="bg-white rounded-3xl shadow-xl p-8 text-center animate-fade-in-up border border-gray-100">
-                <h2 className="text-3xl font-bold text-gray-800 mb-6">結果発表！</h2>
+            <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl p-8 text-center animate-fade-in-up border border-gray-100 dark:border-slate-700">
+                <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-6">結果発表！</h2>
                 <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4">
-                    {score} <span className="text-2xl text-gray-400">/ {questions.length}</span>
+                    {score} <span className="text-2xl text-gray-400 dark:text-gray-500">/ {questions.length}</span>
                 </div>
-                <p className="text-gray-600 mb-8 font-medium">
+                <p className="text-gray-600 dark:text-gray-300 mb-8 font-medium">
                     {score === questions.length
                         ? "完璧です！正式名称マスターですね！🏆"
                         : "お疲れ様でした！復習して目指せ満点！💪"}
@@ -145,7 +145,7 @@ export default function WordShuffleQuiz({ allKeywords, mode = 'random10' }: Word
                     </button>
                     <Link
                         href="/"
-                        className="px-8 py-3 bg-gray-100 text-gray-600 rounded-full font-bold hover:bg-gray-200 transition-colors"
+                        className="px-8 py-3 bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300 rounded-full font-bold hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors"
                     >
                         終了する
                     </Link>
@@ -159,8 +159,8 @@ export default function WordShuffleQuiz({ allKeywords, mode = 'random10' }: Word
     return (
         <div className="w-full max-w-3xl mx-auto font-sans">
             {/* Header / Progress */}
-            <div className="mb-8 p-4 bg-white/50 backdrop-blur-sm rounded-2xl flex items-center justify-between border border-gray-200 shadow-sm">
-                <span className="font-bold text-gray-700">Question {currentIndex + 1} <span className="text-gray-400 font-normal">/ {questions.length}</span></span>
+            <div className="mb-8 p-4 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl flex items-center justify-between border border-gray-200 dark:border-slate-700 shadow-sm">
+                <span className="font-bold text-gray-700 dark:text-gray-300">Question {currentIndex + 1} <span className="text-gray-400 dark:text-gray-500 font-normal">/ {questions.length}</span></span>
                 <div className="flex items-center gap-2">
                     <span className="text-sm font-bold text-blue-600">Score</span>
                     <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-bold">{score}</span>
@@ -168,7 +168,7 @@ export default function WordShuffleQuiz({ allKeywords, mode = 'random10' }: Word
             </div>
 
             {/* Question Area */}
-            <div className="bg-white rounded-3xl shadow-xl overflow-hidden mb-8 border border-gray-100">
+            <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl overflow-hidden mb-8 border border-gray-100 dark:border-slate-700">
                 <div className="bg-gradient-to-br from-indigo-600 to-blue-700 p-10 text-white text-center relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
 
@@ -182,7 +182,7 @@ export default function WordShuffleQuiz({ allKeywords, mode = 'random10' }: Word
                 </div>
 
                 {/* Game Area */}
-                <div className="p-8 bg-gray-50/50 min-h-[300px] flex flex-col justify-between">
+                <div className="p-8 bg-gray-50/50 dark:bg-slate-900/50 min-h-[300px] flex flex-col justify-between">
 
                     {/* Construct Area (Selected Words) */}
                     <div className="mb-8">
@@ -196,7 +196,7 @@ export default function WordShuffleQuiz({ allKeywords, mode = 'random10' }: Word
                                     key={w.id}
                                     onClick={() => handleSelectedWordClick(w)}
                                     disabled={!!feedback}
-                                    className="notranslate px-4 py-2 bg-white text-blue-800 font-bold rounded-xl shadow-sm border border-gray-200 hover:border-red-300 hover:text-red-500 hover:shadow-md transition-all active:scale-95 animate-fade-in"
+                                    className="notranslate px-4 py-2 bg-white dark:bg-slate-700 text-blue-800 dark:text-blue-200 font-bold rounded-xl shadow-sm border border-gray-200 dark:border-slate-600 hover:border-red-300 hover:text-red-500 hover:shadow-md transition-all active:scale-95 animate-fade-in"
                                     translate="no"
                                 >
                                     {w.text}
@@ -220,7 +220,7 @@ export default function WordShuffleQuiz({ allKeywords, mode = 'random10' }: Word
                                     key={w.id}
                                     onClick={() => handlePoolWordClick(w)}
                                     disabled={!!feedback}
-                                    className="notranslate px-5 py-3 bg-white text-gray-700 font-bold rounded-xl shadow-sm border border-gray-200 hover:-translate-y-1 hover:shadow-md hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 active:scale-95"
+                                    className="notranslate px-5 py-3 bg-white dark:bg-slate-700 text-gray-700 dark:text-gray-200 font-bold rounded-xl shadow-sm border border-gray-200 dark:border-slate-600 hover:-translate-y-1 hover:shadow-md hover:border-blue-300 hover:bg-blue-50 dark:hover:bg-slate-600 transition-all duration-200 active:scale-95"
                                     translate="no"
                                 >
                                     {w.text}
@@ -246,7 +246,7 @@ export default function WordShuffleQuiz({ allKeywords, mode = 'random10' }: Word
                                         👏 正解！ <span className="notranslate" translate="no">{currentQ.full_english_name}</span>
                                     </div>
                                 ) : (
-                                    <div className="bg-red-100 text-red-800 p-4 rounded-xl mb-4 text-center font-bold border border-red-200 block">
+                                    <div className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 p-4 rounded-xl mb-4 text-center font-bold border border-red-200 dark:border-red-800 block">
                                         ❌ 正解は... <span className="notranslate text-lg" translate="no">{currentQ.full_english_name}</span>
                                     </div>
                                 )}

@@ -2,13 +2,13 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 flex flex-col items-center justify-center p-8 font-[family-name:var(--font-geist-sans)]">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 dark:from-slate-900 dark:to-slate-800 flex flex-col items-center justify-center p-8 font-[family-name:var(--font-geist-sans)] transition-colors duration-300">
       <main className="max-w-4xl w-full text-center space-y-12">
         <div className="space-y-6">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 animate-fade-in-up">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 animate-fade-in-up">
             ITパスポート<br className="md:hidden" />略語マスター
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-100">
+          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-100">
             試験によく出る「アルファベット3文字」の用語を<br />
             クイズ形式で楽しく攻略しよう！
           </p>
@@ -57,8 +57,8 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="mt-24 text-gray-500 text-sm">
-        © 2024 IT Passport Study App. Powered by Next.js & Tailwind CSS.
+      <footer className="mt-24 text-gray-500 dark:text-gray-400 text-sm">
+        © 2026 IT Passport Study App. Powered by Next.js & Tailwind CSS.
       </footer>
     </div>
   );
@@ -74,10 +74,10 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm border border-white/20 hover:shadow-md transition-shadow">
+    <div className="p-6 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl shadow-sm border border-white/20 dark:border-white/10 hover:shadow-md transition-shadow">
       <div className="text-4xl mb-4">{emoji}</div>
-      <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
-      <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
+      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{title}</h3>
+      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{description}</p>
     </div>
   );
 }

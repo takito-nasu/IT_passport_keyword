@@ -67,12 +67,12 @@ export default function QuizGame({ allKeywords }: QuizGameProps) {
 
     if (isFinished) {
         return (
-            <div className="bg-white rounded-3xl shadow-xl p-8 text-center animate-fade-in-up">
-                <h2 className="text-3xl font-bold text-gray-800 mb-6">結果発表！</h2>
-                <div className="text-6xl font-black text-blue-600 mb-4">
-                    {score} <span className="text-2xl text-gray-400">/ {questions.length}</span>
+            <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl p-8 text-center animate-fade-in-up">
+                <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-6">結果発表！</h2>
+                <div className="text-6xl font-black text-blue-600 dark:text-blue-400 mb-4">
+                    {score} <span className="text-2xl text-gray-400 dark:text-gray-500">/ {questions.length}</span>
                 </div>
-                <p className="text-gray-600 mb-8">
+                <p className="text-gray-600 dark:text-gray-300 mb-8">
                     {score === questions.length
                         ? "素晴らしい！全問正解です！🎉"
                         : score >= questions.length * 0.7
@@ -88,7 +88,7 @@ export default function QuizGame({ allKeywords }: QuizGameProps) {
                     </button>
                     <Link
                         href="/"
-                        className="px-6 py-3 bg-gray-100 text-gray-600 rounded-full font-bold hover:bg-gray-200 transition-colors"
+                        className="px-6 py-3 bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300 rounded-full font-bold hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors"
                     >
                         トップへ戻る
                     </Link>
@@ -103,11 +103,11 @@ export default function QuizGame({ allKeywords }: QuizGameProps) {
     return (
         <div className="w-full max-w-2xl mx-auto">
             {/* Progress Bar */}
-            <div className="mb-6 flex items-center justify-between text-sm font-medium text-gray-500">
+            <div className="mb-6 flex items-center justify-between text-sm font-medium text-gray-500 dark:text-gray-400">
                 <span>Question {currentIndex + 1} / {questions.length}</span>
                 <span>Score: {score}</span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-2.5 mb-8">
+            <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5 mb-8">
                 <div
                     className="bg-blue-600 h-2.5 rounded-full transition-all duration-300"
                     style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
@@ -115,7 +115,7 @@ export default function QuizGame({ allKeywords }: QuizGameProps) {
             </div>
 
             {/* Question Card */}
-            <div className="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100">
+            <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-lg overflow-hidden border border-gray-100 dark:border-slate-700">
                 <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-8 text-white text-center">
                     <span className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-semibold mb-3 backdrop-blur-sm">
                         {currentQ.category}
@@ -128,15 +128,15 @@ export default function QuizGame({ allKeywords }: QuizGameProps) {
 
                 <div className="p-6 grid gap-4">
                     {choices.map((choice, idx) => {
-                        let buttonStyle = "bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-700";
+                        let buttonStyle = "bg-gray-50 hover:bg-gray-100 dark:bg-slate-700 dark:hover:bg-slate-600 border-gray-200 dark:border-slate-600 text-gray-700 dark:text-gray-200";
 
                         if (showExplanation) {
                             if (choice === currentQ.meaning_jp) {
-                                buttonStyle = "bg-green-100 border-green-300 text-green-800 font-bold ring-2 ring-green-400"; // Correct answer
+                                buttonStyle = "bg-green-100 border-green-300 text-green-800 font-bold ring-2 ring-green-400 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800"; // Correct answer
                             } else if (choice === selectedChoice) {
-                                buttonStyle = "bg-red-100 border-red-300 text-red-800 ring-2 ring-red-300"; // Wrong selection
+                                buttonStyle = "bg-red-100 border-red-300 text-red-800 ring-2 ring-red-300 dark:bg-red-900/30 dark:text-red-300 dark:border-red-800"; // Wrong selection
                             } else {
-                                buttonStyle = "bg-gray-50 text-gray-400 opacity-50"; // Others
+                                buttonStyle = "bg-gray-50 text-gray-400 opacity-50 dark:bg-slate-800 dark:text-gray-600"; // Others
                             }
                         }
 
@@ -156,7 +156,7 @@ export default function QuizGame({ allKeywords }: QuizGameProps) {
 
             {/* Explanation / Next Button */}
             {showExplanation && (
-                <div className="mt-6 p-6 bg-blue-50 rounded-2xl border border-blue-100 animate-fade-in-up">
+                <div className="mt-6 p-6 bg-blue-50 dark:bg-slate-800 rounded-2xl border border-blue-100 dark:border-blue-900/30 animate-fade-in-up">
                     <div className="flex items-center gap-3 mb-3">
                         <div className={`p-2 rounded-full ${isCorrect ? 'bg-green-500' : 'bg-red-500'} text-white`}>
                             {isCorrect ? (
@@ -165,13 +165,13 @@ export default function QuizGame({ allKeywords }: QuizGameProps) {
                                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                             )}
                         </div>
-                        <h3 className={`text-lg font-bold ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
+                        <h3 className={`text-lg font-bold ${isCorrect ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
                             {isCorrect ? "正解！" : "残念..."}
                         </h3>
                     </div>
 
-                    <p className="text-gray-700 leading-relaxed mb-6">
-                        <span className="font-bold text-gray-900">{currentQ.meaning_jp}</span>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                        <span className="font-bold text-gray-900 dark:text-white">{currentQ.meaning_jp}</span>
                         <br />
                         {currentQ.full_english_name}
                     </p>
