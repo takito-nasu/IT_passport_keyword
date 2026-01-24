@@ -101,89 +101,98 @@ export default function QuizGame({ allKeywords }: QuizGameProps) {
     const isCorrect = selectedChoice === currentQ.meaning_jp;
 
     return (
-        <div className="w-full max-w-2xl mx-auto">
-            {/* Progress Bar */}
-            <div className="mb-6 flex items-center justify-between text-sm font-medium text-gray-500 dark:text-gray-400">
-                <span>Question {currentIndex + 1} / {questions.length}</span>
-                <span>Score: {score}</span>
-            </div>
-            <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5 mb-8">
-                <div
-                    className="bg-blue-600 h-2.5 rounded-full transition-all duration-300"
-                    style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
-                ></div>
+        <div className="w-full h-dvh flex flex-col overflow-hidden bg-gray-50 dark:bg-slate-900 relative">
+            {/* Header Area */}
+            <div className="flex-none p-4">
+                {/* Progress Bar */}
+                <div className="flex items-center justify-between text-xs font-medium text-gray-500 dark:text-gray-400 mb-2">
+                    <span>Q {currentIndex + 1} / {questions.length}</span>
+                    <span>Score: {score}</span>
+                </div>
+                <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-1.5">
+                    <div
+                        className="bg-blue-600 h-1.5 rounded-full transition-all duration-300"
+                        style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
+                    ></div>
+                </div>
             </div>
 
             {/* Question Card */}
-            <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-lg overflow-hidden border border-gray-100 dark:border-slate-700">
-                <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-8 text-white text-center">
-                    <span className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-semibold mb-3 backdrop-blur-sm">
-                        {currentQ.category}
-                    </span>
-                    <h2 className="text-5xl font-black tracking-tight mb-2">
-                        {currentQ.abbreviation}
-                    </h2>
-                    <p className="opacity-90">この略語の意味は？</p>
-                </div>
-
-                <div className="p-6 grid gap-4">
-                    {choices.map((choice, idx) => {
-                        let buttonStyle = "bg-gray-50 hover:bg-gray-100 dark:bg-slate-700 dark:hover:bg-slate-600 border-gray-200 dark:border-slate-600 text-gray-700 dark:text-gray-200";
-
-                        if (showExplanation) {
-                            if (choice === currentQ.meaning_jp) {
-                                buttonStyle = "bg-green-100 border-green-300 text-green-800 font-bold ring-2 ring-green-400 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800"; // Correct answer
-                            } else if (choice === selectedChoice) {
-                                buttonStyle = "bg-red-100 border-red-300 text-red-800 ring-2 ring-red-300 dark:bg-red-900/30 dark:text-red-300 dark:border-red-800"; // Wrong selection
-                            } else {
-                                buttonStyle = "bg-gray-50 text-gray-400 opacity-50 dark:bg-slate-800 dark:text-gray-600"; // Others
-                            }
-                        }
-
-                        return (
-                            <button
-                                key={idx}
-                                onClick={() => handleAnswer(choice)}
-                                disabled={showExplanation}
-                                className={`w-full p-4 text-left rounded-xl border-2 transition-all duration-200 ${buttonStyle}`}
-                            >
-                                {choice}
-                            </button>
-                        );
-                    })}
-                </div>
+            <div className="flex-none px-4 pb-2 text-center">
+                <span className="inline-block px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-[10px] font-semibold mb-2">
+                    {currentQ.category}
+                </span>
+                <h2 className="text-3xl font-black tracking-tight text-gray-800 dark:text-white mb-1">
+                    {currentQ.abbreviation}
+                </h2>
+                <p className="text-sm text-gray-500 dark:text-gray-400">の意味は？</p>
             </div>
 
-            {/* Explanation / Next Button */}
-            {showExplanation && (
-                <div className="mt-6 p-6 bg-blue-50 dark:bg-slate-800 rounded-2xl border border-blue-100 dark:border-blue-900/30 animate-fade-in-up">
-                    <div className="flex items-center gap-3 mb-3">
-                        <div className={`p-2 rounded-full ${isCorrect ? 'bg-green-500' : 'bg-red-500'} text-white`}>
+            {/* Choices Area */}
+            <div className="flex-1 px-4 pb-20 overflow-y-auto flex flex-col justify-center gap-3">
+                {choices.map((choice, idx) => {
+                    let buttonStyle = "bg-white hover:bg-gray-50 dark:bg-slate-800 dark:hover:bg-slate-700 border-gray-200 dark:border-slate-700 text-gray-700 dark:text-gray-200 shadow-sm";
+
+                    if (showExplanation) {
+                        if (choice === currentQ.meaning_jp) {
+                            buttonStyle = "bg-green-100 border-green-300 text-green-800 font-bold ring-2 ring-green-400 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800"; // Correct answer
+                        } else if (choice === selectedChoice) {
+                            buttonStyle = "bg-red-100 border-red-300 text-red-800 ring-2 ring-red-300 dark:bg-red-900/30 dark:text-red-300 dark:border-red-800"; // Wrong selection
+                        } else {
+                            buttonStyle = "bg-gray-50 text-gray-400 opacity-50 dark:bg-slate-800 dark:text-gray-600"; // Others
+                        }
+                    }
+
+                    return (
+                        <button
+                            key={idx}
+                            onClick={() => handleAnswer(choice)}
+                            disabled={showExplanation}
+                            className={`w-full py-4 px-5 text-left rounded-xl border transition-all duration-200 flex items-center justify-between ${buttonStyle}`}
+                        >
+                            <span className="text-sm font-medium">{choice}</span>
+                            {showExplanation && choice === currentQ.meaning_jp && (
+                                <svg className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                            )}
+                            {showExplanation && choice === selectedChoice && choice !== currentQ.meaning_jp && (
+                                <svg className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                            )}
+                        </button>
+                    );
+                })}
+            </div>
+
+            {/* Explanation Bottom Sheet */}
+            <div
+                className={`absolute bottom-0 left-0 w-full bg-slate-800 text-white p-6 rounded-t-3xl shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.3)] transition-transform duration-300 ease-out z-20 ${showExplanation ? 'translate-y-0' : 'translate-y-full'}`}
+            >
+                <div className="flex items-center justify-between">
+                    <div className="flex-1 pr-4">
+                        <div className="flex items-center gap-2 mb-1">
                             {isCorrect ? (
-                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                <span className="flex items-center gap-1 text-green-400 font-bold text-lg">
+                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    正解
+                                </span>
                             ) : (
-                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                                <span className="flex items-center gap-1 text-red-400 font-bold text-lg">
+                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                                    不正解
+                                </span>
                             )}
                         </div>
-                        <h3 className={`text-lg font-bold ${isCorrect ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>
-                            {isCorrect ? "正解！" : "残念..."}
-                        </h3>
+                        <h3 className="text-xl font-bold text-white leading-tight mb-1">{currentQ.meaning_jp}</h3>
+                        <p className="text-xs text-slate-400 font-mono">{currentQ.full_english_name}</p>
                     </div>
-
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                        <span className="font-bold text-gray-900 dark:text-white">{currentQ.meaning_jp}</span>
-                        <br />
-                        {currentQ.full_english_name}
-                    </p>
 
                     <button
                         onClick={handleNext}
-                        className="w-full py-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 hover:shadow-lg transition-all transform hover:-translate-y-1"
+                        className="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 active:scale-95 transition-all text-white flex-shrink-0"
                     >
-                        {currentIndex + 1 < questions.length ? "次の問題へ" : "結果を見る"}
+                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                     </button>
                 </div>
-            )}
+            </div>
         </div>
     );
 }

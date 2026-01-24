@@ -19,6 +19,13 @@ ITパスポートの略語勉強のための学習サービスです。
 - 正式名称の空白埋め形式により英語理解を深める
 
 
+### 改善予定 (Planned Improvements)
+- **UIレイアウトの改善**
+  - 縦方向のサイズを短縮し、スクロールなしでプレイできるようにする
+- **解説機能の追加**
+  - 解答後に用語の解説を表示し、理解を深められるようにする（例：「LAN：ローカルエリアネットワーク＝家庭内のWi-Fiや会社などの狭い範囲のネットワークのこと」）
+
+
 ## Development
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
