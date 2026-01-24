@@ -157,109 +157,117 @@ export default function WordShuffleQuiz({ allKeywords, mode = 'random10' }: Word
     const currentQ = questions[currentIndex];
 
     return (
-        <div className="w-full max-w-3xl mx-auto font-sans">
-            {/* Header / Progress */}
-            <div className="mb-8 p-4 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl flex items-center justify-between border border-gray-200 dark:border-slate-700 shadow-sm">
-                <span className="font-bold text-gray-700 dark:text-gray-300">Question {currentIndex + 1} <span className="text-gray-400 dark:text-gray-500 font-normal">/ {questions.length}</span></span>
-                <div className="flex items-center gap-2">
-                    <span className="text-sm font-bold text-blue-600">Score</span>
-                    <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-bold">{score}</span>
+        <div className="w-full h-dvh flex flex-col overflow-hidden bg-gray-50 dark:bg-slate-900 relative">
+            {/* Header Area */}
+            <div className="flex-none p-4">
+                {/* Progress Bar */}
+                <div className="flex items-center justify-between text-xs font-medium text-gray-500 dark:text-gray-400 mb-2">
+                    <span>Q {currentIndex + 1} / {questions.length}</span>
+                    <span>Score: {score}</span>
+                </div>
+                <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-1.5">
+                    <div
+                        className="bg-blue-600 h-1.5 rounded-full transition-all duration-300"
+                        style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
+                    ></div>
                 </div>
             </div>
 
-            {/* Question Area */}
-            <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl overflow-hidden mb-8 border border-gray-100 dark:border-slate-700">
-                <div className="bg-gradient-to-br from-indigo-600 to-blue-700 p-10 text-white text-center relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+            {/* Question Card */}
+            <div className="flex-none px-4 pb-2 text-center">
+                <span className="inline-block px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-[10px] font-semibold mb-2">
+                    {currentQ.category}
+                </span>
+                <h2 className="text-3xl font-black tracking-tight text-gray-800 dark:text-white mb-1">
+                    {currentQ.abbreviation}
+                </h2>
+                <div className="h-6"></div> {/* Spacer for consistent layout */}
+            </div>
 
-                    <span className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-semibold mb-4 backdrop-blur-md">
-                        {currentQ.category}
-                    </span>
-                    <h2 className="notranslate text-6xl font-black tracking-tighter mb-4 filter drop-shadow-md" translate="no">
-                        {currentQ.abbreviation}
-                    </h2>
-
+            {/* Game Area (Scrollable if needed, but flex-1 to fill) */}
+            <div className="flex-1 px-4 flex flex-col overflow-y-auto pb-32">
+                {/* Construct Area (Selected Words) */}
+                <div className="mb-4 flex-none min-h-[140px] flex flex-col justify-center">
+                    <p className="text-xs text-gray-400 font-bold mb-2 uppercase tracking-wider text-center">Your Answer</p>
+                    <div className={`min-h-[100px] p-4 bg-white dark:bg-slate-800 rounded-2xl border-2 ${feedback === 'correct' ? 'border-green-400 bg-green-50 dark:bg-green-900/20' : feedback === 'incorrect' ? 'border-red-300 bg-red-50 dark:bg-red-900/20' : 'border-blue-200 dark:border-blue-900 border-dashed'} flex flex-wrap gap-2 items-center justify-center transition-all duration-300`}>
+                        {selectedWords.length === 0 && !feedback && (
+                            <span className="text-gray-400 dark:text-gray-600 text-sm italic">単語をタップして選択</span>
+                        )}
+                        {selectedWords.map((w) => (
+                            <button
+                                key={w.id}
+                                onClick={() => handleSelectedWordClick(w)}
+                                disabled={!!feedback}
+                                className="notranslate px-3 py-2 bg-blue-50 dark:bg-slate-700 text-blue-800 dark:text-blue-200 font-bold rounded-lg shadow-sm border border-blue-100 dark:border-slate-600 active:scale-95 animate-fade-in text-sm"
+                                translate="no"
+                            >
+                                {w.text}
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
-                {/* Game Area */}
-                <div className="p-8 bg-gray-50/50 dark:bg-slate-900/50 min-h-[300px] flex flex-col justify-between">
-
-                    {/* Construct Area (Selected Words) */}
-                    <div className="mb-8">
-                        <p className="text-sm text-gray-500 font-bold mb-3 uppercase tracking-wider">Your Answer</p>
-                        <div className={`min-h-[80px] p-4 bg-white rounded-2xl border-2 ${feedback === 'correct' ? 'border-green-400 bg-green-50' : feedback === 'incorrect' ? 'border-red-300 bg-red-50' : 'border-blue-200 border-dashed'} flex flex-wrap gap-2 items-center transition-all duration-300`}>
-                            {selectedWords.length === 0 && !feedback && (
-                                <span className="text-gray-400 w-full text-center italic">単語を選んで並べてください</span>
-                            )}
-                            {selectedWords.map((w) => (
-                                <button
-                                    key={w.id}
-                                    onClick={() => handleSelectedWordClick(w)}
-                                    disabled={!!feedback}
-                                    className="notranslate px-4 py-2 bg-white dark:bg-slate-700 text-blue-800 dark:text-blue-200 font-bold rounded-xl shadow-sm border border-gray-200 dark:border-slate-600 hover:border-red-300 hover:text-red-500 hover:shadow-md transition-all active:scale-95 animate-fade-in"
-                                    translate="no"
-                                >
-                                    {w.text}
-                                </button>
-                            ))}
-                        </div>
-                        {feedback === 'incorrect' && (
-                            <p className="text-red-500 text-sm mt-2 font-bold px-2 flex items-center gap-1">
-                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                違うようです...もう一度考えてみましょう（略語の文字と一致しますか？）
-                            </p>
-                        )}
-                    </div>
-
-                    {/* Word Pool */}
-                    <div className="mb-8">
-                        <p className="text-sm text-gray-500 font-bold mb-3 uppercase tracking-wider">Word Bank</p>
-                        <div className="flex flex-wrap gap-3 justify-center">
-                            {poolWords.map((w) => (
-                                <button
-                                    key={w.id}
-                                    onClick={() => handlePoolWordClick(w)}
-                                    disabled={!!feedback}
-                                    className="notranslate px-5 py-3 bg-white dark:bg-slate-700 text-gray-700 dark:text-gray-200 font-bold rounded-xl shadow-sm border border-gray-200 dark:border-slate-600 hover:-translate-y-1 hover:shadow-md hover:border-blue-300 hover:bg-blue-50 dark:hover:bg-slate-600 transition-all duration-200 active:scale-95"
-                                    translate="no"
-                                >
-                                    {w.text}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Actions */}
-                    <div>
-                        {!feedback ? (
+                {/* Word Pool */}
+                <div className="flex-1">
+                    <p className="text-xs text-gray-400 font-bold mb-2 uppercase tracking-wider text-center">Word Bank</p>
+                    <div className="flex flex-wrap gap-2 justify-center content-start">
+                        {poolWords.map((w) => (
                             <button
-                                onClick={handleSubmit}
-                                disabled={selectedWords.length === 0}
-                                className="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-bold shadow-lg shadow-blue-200 disabled:opacity-50 disabled:shadow-none hover:shadow-xl hover:scale-[1.01] transition-all"
+                                key={w.id}
+                                onClick={() => handlePoolWordClick(w)}
+                                disabled={!!feedback}
+                                className="notranslate px-4 py-3 bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-200 font-bold rounded-xl shadow-sm border border-gray-200 dark:border-slate-600 active:scale-95 transition-all duration-200 text-sm"
+                                translate="no"
                             >
-                                回答する
+                                {w.text}
                             </button>
-                        ) : (
-                            <div className="animate-fade-in-up">
-                                {feedback === 'correct' ? (
-                                    <div className="bg-green-100 text-green-800 p-4 rounded-xl mb-4 text-center font-bold border border-green-200">
-                                        👏 正解！ <span className="notranslate" translate="no">{currentQ.full_english_name}</span>
-                                    </div>
-                                ) : (
-                                    <div className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 p-4 rounded-xl mb-4 text-center font-bold border border-red-200 dark:border-red-800 block">
-                                        ❌ 正解は... <span className="notranslate text-lg" translate="no">{currentQ.full_english_name}</span>
-                                    </div>
-                                )}
-                                <button
-                                    onClick={handleNext}
-                                    className={`w-full py-4 text-white rounded-xl font-bold shadow-lg transition-all ${feedback === 'correct' ? 'bg-green-500 hover:bg-green-600 shadow-green-200' : 'bg-gray-800 hover:bg-gray-900'}`}
-                                >
-                                    {currentIndex + 1 < questions.length ? "次の問題へ" : "結果を見る"}
-                                </button>
-                            </div>
-                        )}
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Footer Action Button (Answer) - Only show when not in feedback mode */}
+            {!feedback && (
+                <div className="absolute bottom-6 left-0 w-full px-6">
+                    <button
+                        onClick={handleSubmit}
+                        disabled={selectedWords.length === 0}
+                        className="w-full py-4 bg-blue-600 text-white rounded-full font-bold shadow-lg shadow-blue-200/50 disabled:opacity-50 disabled:shadow-none active:scale-95 transition-all text-lg"
+                    >
+                        回答する
+                    </button>
+                </div>
+            )}
+
+            {/* Explanation Bottom Sheet */}
+            <div
+                className={`absolute bottom-0 left-0 w-full bg-slate-800 text-white p-6 rounded-t-3xl shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.3)] transition-transform duration-300 ease-out z-20 ${feedback ? 'translate-y-0' : 'translate-y-full'}`}
+            >
+                <div className="flex items-center justify-between">
+                    <div className="flex-1 pr-4">
+                        <div className="flex items-center gap-2 mb-1">
+                            {feedback === 'correct' ? (
+                                <span className="flex items-center gap-1 text-green-400 font-bold text-lg">
+                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    正解
+                                </span>
+                            ) : (
+                                <span className="flex items-center gap-1 text-red-400 font-bold text-lg">
+                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                                    不正解
+                                </span>
+                            )}
+                        </div>
+                        <h3 className="text-xl font-bold text-white leading-tight mb-1">{currentQ.meaning_jp}</h3>
+                        <p className="text-xs text-slate-400 font-mono tracking-wide">{currentQ.full_english_name}</p>
                     </div>
 
+                    <button
+                        onClick={handleNext}
+                        className="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 active:scale-95 transition-all text-white flex-shrink-0"
+                    >
+                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                    </button>
                 </div>
             </div>
         </div>

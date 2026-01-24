@@ -22,25 +22,12 @@ export default async function QuizPage() {
     const keywords = await getKeywords();
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-slate-900 flex flex-col font-[family-name:var(--font-geist-sans)] transition-colors duration-300">
-            <header className="bg-white dark:bg-slate-900 shadow-sm p-4 sticky top-0 z-10 border-b border-gray-100 dark:border-slate-800">
-                <div className="max-w-4xl mx-auto flex justify-between items-center">
-                    <h1 className="text-xl font-black tracking-tight flex items-center gap-2">
-                        <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                            <span className="text-2xl">🧩</span>
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-                                略語マスター
-                            </span>
-                        </Link>
-                    </h1>
-                </div>
-            </header>
-
-            <main className="flex-1 w-full mx-auto p-4 md:p-8 flex flex-col justify-center">
-                {keywords.length > 0 ? (
-                    <QuizCoordinator allKeywords={keywords} />
-                ) : (
-                    <div className="text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-red-100 dark:border-red-900/30">
+        <main className="min-h-screen bg-gray-50 dark:bg-slate-900 font-[family-name:var(--font-geist-sans)] transition-colors duration-300">
+            {keywords.length > 0 ? (
+                <QuizCoordinator allKeywords={keywords} />
+            ) : (
+                <div className="flex items-center justify-center min-h-screen p-4">
+                    <div className="text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-red-100 dark:border-red-900/30 max-w-md w-full">
                         <h2 className="text-2xl font-bold text-red-600 dark:text-red-400 mb-4">データが見つかりません</h2>
                         <p className="text-gray-600 dark:text-gray-300 mb-6">
                             問題データの取得に失敗したか、データが登録されていません。<br />
@@ -52,8 +39,8 @@ export default async function QuizPage() {
                             - NEXT_PUBLIC_SUPABASE_ANON_KEY: {process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? 'Set' : 'Missing'}
                         </div>
                     </div>
-                )}
-            </main>
-        </div>
+                </div>
+            )}
+        </main>
     );
 }
